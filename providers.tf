@@ -3,12 +3,14 @@ terraform {
         bucket         = "asaf-vault-acct-tfstate"
         key            = "workspacebased/ec2.tfstate"
         region         = "us-east-1"
-        profile        = "asaf-aws-sandbox"
         dynamodb_table = "terraform_locks"
+        role_arn       = "arn:aws:iam::300301835588:role/atlantis-role"
     }
 }
 
 provider "aws" {
-  region  = var.aws_region
-  profile = var.aws_profile
+  region = var.aws_region
+  assume_role {
+    role_arn       = "arn:aws:iam::300301835588:role/atlantis-role"
+  }
 }
