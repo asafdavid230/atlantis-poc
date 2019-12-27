@@ -1,3 +1,3 @@
 output "output" {
-  value = "aws_instance.server.private_ip"
+  value = "aws_instance.web.private_ip"
 }
