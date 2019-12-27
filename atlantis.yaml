@@ -1,0 +1,14 @@
+projects:
+# If two or more projects have the same dir and workspace, they must also have
+# a 'name' key to differentiate them.
+- name: ec2-development
+  dir: ec2
+  workflow: development
+
+workflows:
+  development:
+      plan:
+        steps:
+          - init
+          - plan:
+              extra_args: ["-var-file", "tfvars/development-us-east-1"]
