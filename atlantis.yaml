@@ -13,4 +13,4 @@ workflows:
         steps:
           - init
           - plan:
-              extra_args: ["-var-file", "tfvars/development-us-east-1"]
+              extra_args: ["-var-file", "tfvars/development-us-east-1-terraform.tfvars"]
