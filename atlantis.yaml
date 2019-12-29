@@ -6,7 +6,18 @@ projects:
   dir: ec2
   workflow: development
   workspace: development-us-east-1
-
+  autoplan:
+    when_modified: ["*.tf"]
+    enabled: true
+  apply_requirements: [approved]
+- name: ec2-production
+  dir: ec2
+  workflow: production
+  workspace: production-us-east-1
+  autoplan:
+    when_modified: ["*.tf"]
+    enabled: false
+  apply_requirements: [approved, mergeable]
 workflows:
   development:
       plan:
@@ -14,3 +25,9 @@ workflows:
           - init
           - plan:
               extra_args: ["-var-file", "tfvars/development-us-east-1-terraform.tfvars"]
+  production:
+    plan:
+      steps:
+        - init
+        - plan:
+            extra_args: ["-var-file", "tfvars/production-us-east-1-terraform.tfvars"]

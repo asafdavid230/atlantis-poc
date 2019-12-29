@@ -5,7 +5,7 @@ terraform {
         region         = "us-east-1"
         dynamodb_table = "terraform_locks"
         role_arn       = "arn:aws:iam::300301835588:role/atlantis"
-        # profile = "asaf-aws-sandbox"
+        profile = "asaf-aws-sandbox"
     }
 }
 
